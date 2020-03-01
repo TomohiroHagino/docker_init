@@ -9,10 +9,10 @@ docker desktopをインストールする。
 $ git clone git@github.com:china-inventory2/china-inventory2.git
 $ cd china-inventory2
 
-初回時はこれ（imageがなければimageビルドから）コンテナの起動までを行う。初回は起動に失敗すると思います。
+初回時はこれ（imageがなければimageビルドから）コンテナの作成と開始。
 $ docker-compose up
 
-Gemfileに変更を加えた場合はこれですが、Gemをインストールする場合は事前にご連絡ください。
+Gemfileに変更を加えた場合はこれです。サービスの構築または再構築。
 $ docker-compose build
 
 DB関連
@@ -20,8 +20,11 @@ $ docker-compose run app bundle exec rails db:reset
 $ docker-compose run app bundle exec rails db:create
 $ docker-compose run app bundle exec rails db:migrate
 
-作業を終了する時はコンテナを終了させます。
+作業を終了する時はコンテナを終了させます。サービスの停止。
 $ docker-compose stop
+
+コンテナを終了させる場合はこちら。
+$ docker-compose down
 
 2回目以降からは以前に作ったコンテナを起動させます。
 $ docker-compose start
