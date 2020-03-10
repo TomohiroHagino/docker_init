@@ -6,7 +6,7 @@
 
 ```
 docker desktopをインストールしたあと、下記のリポジトリをクローンする。
-$ git clone git@github.com:china-inventory2/china-inventory2.git
+$ git clone git@github.com:TomohiroHagino/docker_init.git
 $ cd china-inventory2
 
 初回時はこれ（imageがなければimageビルドから）コンテナの起動までを行う。
