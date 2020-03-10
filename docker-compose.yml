@@ -14,7 +14,8 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:12.1-alpine
+    build:
+      context: ./docker/postgresql/
     volumes:
       - pg_data:/var/lib/postgresql/data
     ports:
@@ -23,7 +24,8 @@ services:
       POSTGRES_PASSWORD: password
   nginx:
     build:
-      context: ./nginx
+      context: ./docker/nginx/
+    command: /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
     volumes:
       - public_volume:/myapp/public
       - tmp_volume:/myapp/tmp
@@ -31,8 +33,20 @@ services:
       - 80:80
     depends_on:
       - app
+  minio:
+    image: minio/minio:latest
+    ports:
+      - 9000:9000
+    volumes:
+      - minio:/data
+    command: server /data
+    environment:
+      MINIO_ACCESS_KEY: minio_access_key
+      MINIO_SECRET_KEY: minio_secret_key
 volumes:
   public_volume:
   tmp_volume:
   log_volume:
   pg_data:
+  minio:
+    driver: local

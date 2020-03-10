@@ -36,7 +36,6 @@ ENV LANG=C.UTF-8 \
 # 使用するエディタ
 ENV EDITOR vim
 
-RUN bundle install
-
 # nginxでpuma.sockを配置するディレクトリを作成
 RUN mkdir -p tmp/sockets
+RUN mkdir -p tmp/public

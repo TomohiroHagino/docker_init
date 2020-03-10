@@ -29,5 +29,20 @@ module Myapp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.time_zone = 'Asia/Tokyo' #日時設定をアジア東京にセット
+    config.i18n.default_locale = :ja
+
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.eager_load_paths += Dir["#{config.root}/lib/**/"]
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration can go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded after loading
+    # the framework and any gems in your application.
+    config.generators do |g|
+      g.test_framework = "rspec"
+      g.controller_specs = false
+      g.helper_specs = false
+      g.view_specs = false
+    end
   end
 end
