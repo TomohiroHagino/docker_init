@@ -1,8 +1,9 @@
 version: '3'
 services:
   app:
-    build: .
-    command: sh launch.sh
+    build:
+      context: ./docker/rails/
+    command: sh ./docker/rails/launch.sh
     volumes:
       - .:/myapp
       - public_volume:/myapp/public
